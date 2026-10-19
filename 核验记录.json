@@ -1,0 +1,1753 @@
+{
+  "edition": "V3",
+  "checked": "2026-10-18",
+  "counts": {
+    "questions": 901,
+    "categories": 23,
+    "repositories": 12,
+    "actual": 821,
+    "public": 69,
+    "student": 7,
+    "repo": 784,
+    "course": 38,
+    "edited": 68,
+    "tracks": {
+      "Agent": 827,
+      "Go": 74
+    },
+    "greenbook": 777
+  },
+  "import": {
+    "raw": 828,
+    "new": 719,
+    "merged": 109,
+    "canonicals": 901,
+    "greenbookCanonicals": 777,
+    "commit": "d344088223d5c0160f1d998c42f266645087fb06",
+    "stats": {
+      "questions": 901,
+      "categories": 23,
+      "repositories": 12,
+      "actual": 821,
+      "public": 69,
+      "student": 7,
+      "repo": 784,
+      "course": 38,
+      "edited": 68,
+      "tracks": {
+        "Agent": 827,
+        "Go": 74
+      },
+      "greenbook": 777
+    }
+  },
+  "source": {
+    "repository": "https://github.com/ranxi2001/zero2Agent",
+    "commit": "d344088223d5c0160f1d998c42f266645087fb06",
+    "book": "Agent面试800问",
+    "version": "v1.3.0",
+    "date": "2026-10-14",
+    "author": "Onefly",
+    "license": "CC BY-NC-SA 4.0",
+    "sourceQuestionCount": 828,
+    "expertAnswerCount": 828,
+    "noviceComparisonCount": 827,
+    "codingQuestionWithoutNovice": "Z09-052",
+    "pdfPages": 732,
+    "pdfSha256": "8dab4937a9fad1fb6af1438e4a05f925fb25f711f76c7cdc31ea5efeb7e3bc05",
+    "originalFileHashes": {
+      "metadata.yaml": "8ac381f739da32dfe3bc98fe1cfb81ecf4730135f75e9142c70355ed15960e19",
+      "zero2Agent-绿皮书-Agent面试800问.pdf": "8dab4937a9fad1fb6af1438e4a05f925fb25f711f76c7cdc31ea5efeb7e3bc05",
+      "REPOSITORY-LICENSE": "794391a45d63d7cf62f7fdaf417d8cc67d8366b572099ae872ffc5ebed71dcd6",
+      "learn-agent-interview/index.md": "d448119e0fb7734ce582d6f420de151fe253acc003855204e46aa19b80c51b19",
+      "learn-agent-interview/11-ai-code-testing/index.md": "806464f194c7773d695a8b3b0d7fb40994ab0d8c1c5e5f782d8bfa881fdfb3e0",
+      "learn-agent-interview/13-project-deep-dive/index.md": "dd8b4b22124c0ce4592c5b3f08c8cda940d381f33a82bb18cf33954f2def3edd",
+      "learn-agent-interview/07-engineering-pitfalls/index.md": "27d0a59e31ab301fdfc8d65b243c3c7e54710d43b8332b1bd40e31fbd75ebf5d",
+      "learn-agent-interview/04-memory-context/index.md": "f7a317c87493917f01c124c3ffc775a9ace94aa1c3b3bca23ea28bcde6a4f7af",
+      "learn-agent-interview/15-agent-concepts/index.md": "a2146de9f9d53938f780a969f8bfdfa7cbbfc65d13b1641b64e1a8a5233933da",
+      "learn-agent-interview/09-rag-retrieval/index.md": "75fe2919e3069967a7fbff9774f6b4bdbcb49dd265e23dd8ba73acf484690a9c",
+      "learn-agent-interview/08-prompt-engineering/index.md": "14f435b27235a8bb21350055c42e312ccbf27727a86e3fa507243c8d44572f4d",
+      "learn-agent-interview/16-agent-infra/index.md": "add3ddaef260b6405c643c568450a3402d320b20fc196cfe8387c865a6f846ca",
+      "learn-agent-interview/02-tool-management/index.md": "ac481dd4f59246325be04647833ce59d3927fcdca51e260964158c7ff72f5e5e",
+      "learn-agent-interview/01-architecture-design/index.md": "d87d6b7018865d0d842eae29bb63c524c3fa33fd44052e488930d94d154e1613",
+      "learn-agent-interview/06-multi-agent-collab/index.md": "eae53cce13e98f26cf3d8e1f326b343fbdc26ca960a7f643d481d7cef70065dd",
+      "learn-agent-interview/10-training-and-data/index.md": "71c553b264fdfb4e175fac9c8e2f23bf5625873721d28d244cd0a8a46c2e28b8",
+      "learn-agent-interview/03-fault-tolerance/index.md": "66005a34c5fd3385731b9a82335ddce0d4370bb613880609e9df4191760c8a91",
+      "learn-agent-interview/12-business-ai-engineering/index.md": "34dbd5d535548e5a13e0b08793fdc3d9e47fcfe499412f4b6c905343dce4356f",
+      "learn-agent-interview/05-eval-and-vision/index.md": "f59f5cb3287a5eab639bffed505ee9103162efbe994e06e2b1958b742b1b7bb9",
+      "learn-agent-interview/14-company-preferences/index.md": "0a3c0968e6f09540528099ddd6ca17f37089726b0b319d466947c9bf4afa0bc6",
+      "learn-agent-interview/17-ai-infra/index.md": "c36dc0171f6585c22a2bee12a33d85fa16df058fd755cce7f717337d48d5bdb0"
+    },
+    "accessVerification": "Git sparse clone与raw固定版本原文下载成功；828题与PDF排版源逐题标题对照，17章原文与PDF保留。未逐个访问上游嵌入的所有面经链接。"
+  },
+  "dedup": {
+    "input": 1072,
+    "output": 901,
+    "mergedTotal": 171,
+    "newSourceCount": 828,
+    "newCanonicalCount": 719,
+    "newMergedCount": 109,
+    "greenbookCanonicalCount": 777,
+    "decisionCount": 109,
+    "map": [
+      {
+        "sourceId": "Z01-001",
+        "targetId": "a-loop-03",
+        "reason": "同为 ReAct 与 Plan-and-Execute 的机制、适用场景和组合选型。"
+      },
+      {
+        "sourceId": "Z01-004",
+        "targetId": "a-loop-03",
+        "reason": "同为 ReAct、规划、反思和多 Agent 四种范式的比较与组合。"
+      },
+      {
+        "sourceId": "Z01-008",
+        "targetId": "a-loop-01",
+        "reason": "同为 Agent 与固定 Workflow 的适用边界和选型。"
+      },
+      {
+        "sourceId": "Z01-015",
+        "targetId": "a-loop-03",
+        "reason": "以先规划或边走边决策重述 ReAct 与 Plan-and-Execute 的选型。"
+      },
+      {
+        "sourceId": "Z02-002",
+        "targetId": "pdf-028",
+        "reason": "同问大量工具下如何缩小候选、检索并准确选择工具。"
+      },
+      {
+        "sourceId": "Z02-004",
+        "targetId": "pdf-028",
+        "reason": "同问工具集合过大造成的 Prompt/Token 开销及按需披露。"
+      },
+      {
+        "sourceId": "Z02-007",
+        "targetId": "pdf-100",
+        "reason": "同问 MCP 的能力接入协议与 Skill 的任务知识/流程职责区别及互补。"
+      },
+      {
+        "sourceId": "Z02-008",
+        "targetId": "a-tools-01",
+        "reason": "同问 Function Calling/Tool Use 定义和模型申请、宿主校验执行、回写结果的完整链路。"
+      },
+      {
+        "sourceId": "Z02-010",
+        "targetId": "pdf-100",
+        "reason": "同问 CLI、MCP 和直接 API 的接入边界、部署和调用开销。"
+      },
+      {
+        "sourceId": "Z02-014",
+        "targetId": "a-tools-02",
+        "reason": "同问工具 Schema 的命名、参数、约束、粒度和业务校验设计。"
+      },
+      {
+        "sourceId": "Z02-024",
+        "targetId": "a-memory-07",
+        "reason": "同问工具超长返回如何提取、落盘、分页和按需回查以控制上下文。"
+      },
+      {
+        "sourceId": "Z02-038",
+        "targetId": "pdf-032",
+        "reason": "同问 stdio 与 Streamable HTTP/SSE 接入方式、场景和传输边界。"
+      },
+      {
+        "sourceId": "Z02-039",
+        "targetId": "pdf-028",
+        "reason": "将工具规模换成 1000，核心仍为单 Agent 工具检索、候选缩减和按需加载。"
+      },
+      {
+        "sourceId": "Z03-005",
+        "targetId": "a-loop-05",
+        "reason": "同问用步骤/调用/时间/Token 等硬预算和循环检测避免 Agent 无限循环。"
+      },
+      {
+        "sourceId": "Z03-009",
+        "targetId": "a-eval-05",
+        "reason": "同问 Prompt Injection 的输入信任边界与运行时防御。"
+      },
+      {
+        "sourceId": "Z03-016",
+        "targetId": "a-orchestration-05",
+        "reason": "同问高风险工具的显式审批、精确操作参数、等待超时和默认不执行。"
+      },
+      {
+        "sourceId": "Z03-017",
+        "targetId": "Z01-025",
+        "reason": "同问 Self-Reflection 如何检查逻辑错误、定位首错点并在有限轮次内修正。"
+      },
+      {
+        "sourceId": "Z03-025",
+        "targetId": "a-tools-03",
+        "reason": "同问按错误类型和副作用状态选择重试、修参、换策略或停止，空结果作为一个分支保留。"
+      },
+      {
+        "sourceId": "Z04-003",
+        "targetId": "a-orchestration-06",
+        "reason": "同问多 Agent/异步任务的状态、历史与上下文隔离，防止并发覆盖与污染。"
+      },
+      {
+        "sourceId": "Z04-004",
+        "targetId": "a-loop-07",
+        "reason": "同为缺失关键参数时用历史形成候选、请求确认而不猜测执行的澄清问题。"
+      },
+      {
+        "sourceId": "Z04-005",
+        "targetId": "a-memory-01",
+        "reason": "同问 Agent 短期、长期和工作记忆的职责、生命周期及业务事实边界。"
+      },
+      {
+        "sourceId": "Z04-006",
+        "targetId": "a-loop-07",
+        "reason": "同问信息不足时何时用证据补全、何时追问或人工确认。"
+      },
+      {
+        "sourceId": "Z04-020",
+        "targetId": "a-memory-04",
+        "reason": "同问信息应进入长期记忆还是仅留会话的准入标准、来源与确认状态。"
+      },
+      {
+        "sourceId": "Z04-024",
+        "targetId": "pdf-024",
+        "reason": "同问用户当前意愿、历史记忆和权威业务状态冲突时的信任与核验顺序。"
+      },
+      {
+        "sourceId": "Z04-026",
+        "targetId": "a-memory-03",
+        "reason": "同问摘要如何保留数字、否定条件、约束和证据，避免信息有损压缩导致决策失真。"
+      },
+      {
+        "sourceId": "Z04-052",
+        "targetId": "a-memory-04",
+        "reason": "同问跨会话记忆候选的提取、准入、来源、去重、冲突和生命周期。"
+      },
+      {
+        "sourceId": "Z04-053",
+        "targetId": "Z04-046",
+        "reason": "同问摘要后仍保留原始对话、用摘要指针按需回溯与重建历史。"
+      },
+      {
+        "sourceId": "Z05-001",
+        "targetId": "a-eval-01",
+        "reason": "同问 Agent 除准确率外的任务结果、过程、安全、效率和鲁棒性评测维度。"
+      },
+      {
+        "sourceId": "Z05-009",
+        "targetId": "a-eval-01",
+        "reason": "同问完整 Agent 评测体系及为什么最终成功率不足以代表质量。"
+      },
+      {
+        "sourceId": "Z05-027",
+        "targetId": "a-eval-02",
+        "reason": "同问将真实任务/日志分层取样、审核标注并冻结为防污染离线评测集。"
+      },
+      {
+        "sourceId": "Z05-033",
+        "targetId": "pdf-114",
+        "reason": "同问轨迹/反馈到候选经验、离线验证、审核、灰度和回滚的受控自进化闭环。"
+      },
+      {
+        "sourceId": "Z05-044",
+        "targetId": "a-loop-01",
+        "reason": "从不适用场景重述 Agent 与确定性 Workflow 的选型边界。"
+      },
+      {
+        "sourceId": "Z06-002",
+        "targetId": "a-orchestration-06",
+        "reason": "同问多 Agent 的共享状态、私有范围、写权限、版本和并发合并。"
+      },
+      {
+        "sourceId": "Z06-004",
+        "targetId": "a-orchestration-01",
+        "reason": "同问何时采用单 Agent、何时升级多 Agent及其额外成本。"
+      },
+      {
+        "sourceId": "Z06-005",
+        "targetId": "a-orchestration-06",
+        "reason": "同问多 Agent 全局/团队/私有记忆的分层共享及状态污染防治。"
+      },
+      {
+        "sourceId": "Z06-009",
+        "targetId": "pdf-034",
+        "reason": "同问 MCP 的工具接入与 A2A 的 Agent 协作协议职责分工。"
+      },
+      {
+        "sourceId": "Z06-013",
+        "targetId": "a-orchestration-02",
+        "reason": "同问多 Agent 编排拓扑、路由、主管委托和交接的比较与适用条件。"
+      },
+      {
+        "sourceId": "Z06-023",
+        "targetId": "a-orchestration-02",
+        "reason": "同问多 Agent 协作模式的拓扑与选型；辩论、投票、反馈循环作为模式变体完整保留。"
+      },
+      {
+        "sourceId": "Z06-032",
+        "targetId": "a-orchestration-06",
+        "reason": "同问共享 State 的命名空间、快照、Delta/Reducer 合并如何避免并发覆盖。"
+      },
+      {
+        "sourceId": "Z06-033",
+        "targetId": "Z06-003",
+        "reason": "同问 Agent 互相递归转交/对话的循环检测、深度预算、收敛和协调器兜底。"
+      },
+      {
+        "sourceId": "Z07-002",
+        "targetId": "a-production-05",
+        "reason": "同问任务成本如何通过预算、上下文、模型路由和重复调用治理控制。"
+      },
+      {
+        "sourceId": "Z07-003",
+        "targetId": "pdf-080",
+        "reason": "同为项目踩坑/失败复盘面试问法，要求具体问题、根因和系统修复。"
+      },
+      {
+        "sourceId": "Z07-009",
+        "targetId": "pdf-080",
+        "reason": "以最大坑重述项目难点与失败复盘，状态外置作为具体案例保留。"
+      },
+      {
+        "sourceId": "Z07-021",
+        "targetId": "a-production-02",
+        "reason": "同问 SSE 事件格式、增量解码、半包拼接、背压与连接边界。"
+      },
+      {
+        "sourceId": "Z07-022",
+        "targetId": "pdf-088",
+        "reason": "同问 Agent 开发的需求边界、评测驱动迭代和上线流程及其与传统开发的区别。"
+      },
+      {
+        "sourceId": "Z07-035",
+        "targetId": "a-eval-06",
+        "reason": "同问 Trace/Span、结构化日志、版本和审计如何支撑 Agent 可观测性与排障。"
+      },
+      {
+        "sourceId": "Z07-041",
+        "targetId": "pdf-067",
+        "reason": "同问流量增长时调度/执行分层伸缩、队列、有界并发、模型配额和长连接治理。"
+      },
+      {
+        "sourceId": "Z07-044",
+        "targetId": "g-http-05",
+        "reason": "同问 SSE、WebSocket 与普通 HTTP 的通信方向、连接及 Agent 场景选型。"
+      },
+      {
+        "sourceId": "Z07-047",
+        "targetId": "a-memory-05",
+        "reason": "同问租户/Workspace 在会话、记忆、数据、缓存和异步任务各层的隔离。"
+      },
+      {
+        "sourceId": "Z07-054",
+        "targetId": "a-eval-06",
+        "reason": "同问按模型、工具、检索、排队等 Span 记录耗时并定位端到端瓶颈。"
+      },
+      {
+        "sourceId": "Z07-069",
+        "targetId": "Z07-037",
+        "reason": "日/月只是统计周期变化，同为从请求量、轮数、输入输出 Token、单价及重试缓存推导成本。"
+      },
+      {
+        "sourceId": "Z08-004",
+        "targetId": "Z08-002",
+        "reason": "同问 Skill 系统的注册、发现、上下文注入调用、权限和生命周期的实现。"
+      },
+      {
+        "sourceId": "Z08-005",
+        "targetId": "pdf-100",
+        "reason": "同问 Skill 与 MCP 分属任务知识/流程和外部能力接入层，并可组合使用。"
+      },
+      {
+        "sourceId": "Z08-008",
+        "targetId": "pdf-006",
+        "reason": "同问 Harness 的定义及上下文、工具、权限、状态、恢复和评测等运行支撑职责。"
+      },
+      {
+        "sourceId": "Z08-011",
+        "targetId": "Z08-001",
+        "reason": "同问 Prompt 模板的角色、规则、上下文、工具、示例和输出约束分层组装。"
+      },
+      {
+        "sourceId": "Z08-012",
+        "targetId": "pdf-014",
+        "reason": "同问以固定评测集、单变量、版本和回归而非感觉调优 Prompt；AI 生成候选为具体方法。"
+      },
+      {
+        "sourceId": "Z08-024",
+        "targetId": "pdf-018",
+        "reason": "同问不可变 Skill/Tool 契约版本和会话钉住如何避免升级破坏进行中及历史任务。"
+      },
+      {
+        "sourceId": "Z08-027",
+        "targetId": "pdf-105",
+        "reason": "同问异构 Coding Agent 使用单一项目规范源和薄适配文件，避免规则漂移。"
+      },
+      {
+        "sourceId": "Z09-002",
+        "targetId": "a-rag-01",
+        "reason": "同为 RAG 离线入库与在线召回、融合、重排、生成的数据链路；保留旧 canonical。"
+      },
+      {
+        "sourceId": "Z09-003",
+        "targetId": "a-rag-01",
+        "reason": "项目召回流程的另一问法，核心仍是多路召回、合并去重与排序，原回答还明确补全离线入库和在线问答链路。"
+      },
+      {
+        "sourceId": "Z09-010",
+        "targetId": "pdf-081",
+        "reason": "同问 Embedding/向量化的含义、语义检索价值及项目落点。"
+      },
+      {
+        "sourceId": "Z09-021",
+        "targetId": "a-rag-04",
+        "reason": "同问 BM25 与向量检索为何互补、怎样组合及验证。"
+      },
+      {
+        "sourceId": "Z09-031",
+        "targetId": "a-rag-03",
+        "reason": "同问 Embedding 选型与业务召回评估维度，旧题已经包含语言、长度、成本、维度与实际质量。"
+      },
+      {
+        "sourceId": "Z09-034",
+        "targetId": "a-rag-03",
+        "reason": "同问更换 Embedding 模型时的向量空间兼容、重建索引、版本迁移、评测切换及回滚；旧题明确包含更换流程。"
+      },
+      {
+        "sourceId": "Z09-035",
+        "targetId": "a-foundation-07",
+        "reason": "同问 RAG 与微调的适用边界、知识与行为差异及组合选型。"
+      },
+      {
+        "sourceId": "Z09-043",
+        "targetId": "pdf-047",
+        "reason": "同问 Agentic RAG 与固定检索链路的机制、收益和成本边界。"
+      },
+      {
+        "sourceId": "Z09-044",
+        "targetId": "Z09-042",
+        "reason": "完整回答确认两题都围绕证据充分性门控、改写/换检索路/扩展来源后补搜，以及仍不足时退出。"
+      },
+      {
+        "sourceId": "Z09-059",
+        "targetId": "a-rag-08",
+        "reason": "同问知识库增量更新、版本化索引与无中间态切换，包含新索引验证、原子发布和回滚。"
+      },
+      {
+        "sourceId": "Z09-060",
+        "targetId": "pdf-040",
+        "reason": "同问 RRF 排名融合的公式、缺席通道、去重、参数与评估。"
+      },
+      {
+        "sourceId": "Z09-061",
+        "targetId": "Z09-032",
+        "reason": "完整回答确认同为 grep/关键词与 Embedding 代码搜索的精确性、语义能力、实时性和索引成本取舍。"
+      },
+      {
+        "sourceId": "Z09-062",
+        "targetId": "a-rag-04",
+        "reason": "同问混合检索相对单路的互补收益及按精确词、语义查询分桶验证。"
+      },
+      {
+        "sourceId": "Z09-074",
+        "targetId": "a-rag-05",
+        "reason": "同问 Embedding/双塔先召回、Cross-Encoder 再精排的职责、精度与计算成本取舍。"
+      },
+      {
+        "sourceId": "Z10-041",
+        "targetId": "Z10-033",
+        "reason": "完整回答直接将领域微调后通用能力退化定义为灾难性遗忘，两题同问机理和混合数据、参数约束等缓解方案。"
+      },
+      {
+        "sourceId": "Z11-015",
+        "targetId": "pdf-116",
+        "reason": "同问 AI Coding 接入 TDD、独立验收与防止实现和测试共同误解需求。"
+      },
+      {
+        "sourceId": "Z13-001",
+        "targetId": "a-orchestration-07",
+        "reason": "同问是否采用 LangChain/LangGraph 等 Agent 框架及用复杂度、恢复、可观测性与维护成本作选型。"
+      },
+      {
+        "sourceId": "Z13-006",
+        "targetId": "Z02-001",
+        "reason": "同问工具参数准确性保障，回答均以 Schema、语义/业务校验、反馈和高风险确认构成防线。"
+      },
+      {
+        "sourceId": "Z13-007",
+        "targetId": "a-rag-01",
+        "reason": "同问知识库从数据源到解析、清洗、切分、Embedding、索引与检索验证的构建链路。"
+      },
+      {
+        "sourceId": "Z13-008",
+        "targetId": "Z09-026",
+        "reason": "同问按文档内容设计分块策略、保持结构语义完整并权衡块大小与重叠。"
+      },
+      {
+        "sourceId": "Z13-009",
+        "targetId": "pdf-106",
+        "reason": "同问知识入库时如何解析 PDF/表格/图片并保留版面、表头、结构和原始证据。"
+      },
+      {
+        "sourceId": "Z13-010",
+        "targetId": "Z09-022",
+        "reason": "同问提升 RAG 最终回答质量的全链路优化，涵盖改写、多路召回、重排、上下文和答案验证。"
+      },
+      {
+        "sourceId": "Z13-011",
+        "targetId": "pdf-080",
+        "reason": "同为项目复盘与下一步改进问法，要求识别真实短板、排序改进项并给出验证方案；旧题明确包含下一步改进。"
+      },
+      {
+        "sourceId": "Z13-015",
+        "targetId": "pdf-080",
+        "reason": "同问项目最大难点、失败复盘与重新设计/下一步改进，示例模块不同不构成新考察目标。"
+      },
+      {
+        "sourceId": "Z13-017",
+        "targetId": "a-loop-03",
+        "reason": "同问项目为何采用 ReAct、适用哪些任务、如何与确定性流程组合以及预算等工程改造。"
+      },
+      {
+        "sourceId": "Z15-003",
+        "targetId": "pdf-006",
+        "reason": "同问用自己的项目组件说明 Harness 的约束、运行支撑、验证及可观测性。"
+      },
+      {
+        "sourceId": "Z15-004",
+        "targetId": "Z08-008",
+        "reason": "同问从 Prompt/工具/Workflow 向 Harness 外部工程保障演进的路线及原因。"
+      },
+      {
+        "sourceId": "Z15-008",
+        "targetId": "a-tools-07",
+        "reason": "同问 MCP 与 Function Calling 的层次分工及为什么连接协议不能替代模型调用表达和宿主执行。"
+      },
+      {
+        "sourceId": "Z15-009",
+        "targetId": "pdf-034",
+        "reason": "同问 A2A 的 Agent 协作与 MCP 的工具接入为何分工、如何组合。"
+      },
+      {
+        "sourceId": "Z15-010",
+        "targetId": "Z08-005",
+        "reason": "同问已有 MCP/工具调用后仍需要 Skills 的原因：连接能力与可复用任务知识/流程的区别。"
+      },
+      {
+        "sourceId": "Z15-011",
+        "targetId": "Z01-018",
+        "reason": "同问 Skill、MCP、Rule 三者的定义、职责和协作边界。"
+      },
+      {
+        "sourceId": "Z15-012",
+        "targetId": "Z07-008",
+        "reason": "同问 Coding Agent 产品的架构差异、优缺点和适用场景；新增产品名称保留在来源问法与全文中。"
+      },
+      {
+        "sourceId": "Z15-017",
+        "targetId": "Z11-020",
+        "reason": "同问将代码规范从模型提醒落实为规则配置、formatter/lint/Hooks/CI 门禁的工程治理。"
+      },
+      {
+        "sourceId": "Z15-025",
+        "targetId": "pdf-088",
+        "reason": "同问 Agent 开发相对传统前后端在非确定性、评测、工具契约、权限、状态和成本上的区别。"
+      },
+      {
+        "sourceId": "Z16-001",
+        "targetId": "Z01-009",
+        "reason": "同问生产 Agent 请求/执行循环的阶段划分及模型、工具、校验、状态和终止控制。"
+      },
+      {
+        "sourceId": "Z16-002",
+        "targetId": "a-orchestration-04",
+        "reason": "同问 Checkpoint、事件/执行记录与业务副作用记录的区别及安全恢复点。"
+      },
+      {
+        "sourceId": "Z16-004",
+        "targetId": "pdf-085",
+        "reason": "同问 Sandbox 的文件、网络、进程、资源隔离及容器共享内核带来的边界和更强隔离选型。"
+      },
+      {
+        "sourceId": "Z16-006",
+        "targetId": "a-eval-06",
+        "reason": "同问通过 run/trace/span、状态、工具日志、成本与耗时观测和调试 Agent。"
+      },
+      {
+        "sourceId": "Z16-007",
+        "targetId": "pdf-051",
+        "reason": "同问远端工具已成功、本地写回前崩溃时避免重复副作用；旧题完整回答已有该故障窗口与幂等/查单。"
+      },
+      {
+        "sourceId": "Z16-015",
+        "targetId": "pdf-109",
+        "reason": "同问业务事件触发 Agent 后按用户可靠推送、去重、重试、权限与通知治理。"
+      },
+      {
+        "sourceId": "Z16-016",
+        "targetId": "Z07-061",
+        "reason": "同问 Kubernetes 在 Agent 服务中承担的编排、Worker/Sandbox 生命周期、资源与弹性职责。"
+      },
+      {
+        "sourceId": "Z16-027",
+        "targetId": "a-production-03",
+        "reason": "同问安全取消执行：持久化取消状态、向 Worker/下游传播、停止后续步骤并处理已发生副作用。"
+      },
+      {
+        "sourceId": "Z16-034",
+        "targetId": "g-backend-06",
+        "reason": "同问 Lease 过期/续租失败后的回收、旧持有者与 fencing token 的保护边界。"
+      },
+      {
+        "sourceId": "Z16-035",
+        "targetId": "g-backend-06",
+        "reason": "同问分布式锁/Lease 的唯一持有与旧 Worker fencing，构建任务只是同一互斥不变量的业务实例。"
+      },
+      {
+        "sourceId": "Z02-015",
+        "targetId": "a-tools-07",
+        "reason": "复核旧题实际 standardAnswer 而非误导性的标题：旧题正文正是初始化/能力协商、工具发现、调用、关闭和连接会话治理；与本题 MCP 完整调用生命周期一致。建议同步将旧 canonical 标题改为能反映生命周期的问法。"
+      },
+      {
+        "sourceId": "Z03-027",
+        "targetId": "Z03-002",
+        "reason": "两题均以金融/支付工具超时或失败为触发，核心为识别结果未知、查单对账、幂等重试及必要补偿。跨境汇款的 Saga、影子模式和人工兜底是同题场景细化，应保留完整来源答案而非另立泛化重复题。"
+      },
+      {
+        "sourceId": "Z03-006",
+        "targetId": "Z03-001",
+        "reason": "两题核心均为工业场景幻觉治理的多层手段、边界与介入阶段；Prompt、RAG、结构化输出、引用、事实验证、一致性检测和人工兜底直接重叠。优缺点和训练/部署/运行时是展开维度，完整答案保留；建议 canonical 标题显式覆盖手段取舍与阶段。"
+      },
+      {
+        "sourceId": "Z04-035",
+        "targetId": "a-memory-06",
+        "reason": "旧题正文及追问已区分 KV Cache、Prompt Cache 的输入前缀复用与答案/应用缓存；本题聚焦其在 Agent 的价值、稳定前缀和命中边界，属于同一缓存机制辨析的具体问法。服务商实现细节和摘要对命中的影响须原样保留来源，不压成一句摘要。"
+      },
+      {
+        "sourceId": "Z08-010",
+        "targetId": "Z08-006",
+        "reason": "主考察目标都是好 Prompt 的质量标准：明确边界、约束、上下文、格式和异常兜底；两题均要求迭代/评估，010 将可测量的格式、准确率、鲁棒性、一致性及成本展开。可合并为“好 Prompt 有哪些标准，如何评估”，保留两份完整答案及010的评测细节。"
+      },
+      {
+        "sourceId": "Z09-024",
+        "targetId": "pdf-103",
+        "reason": "完整回答核对：两题均以小粒度切片召回、通过 parent_id/章节结构扩展上下文解决检索精度与证据完整性的矛盾。旧题明确包含父子检索、父章节扩展、去重与预算裁剪，保留旧 canonical 并附原题全文。"
+      },
+      {
+        "sourceId": "Z09-084",
+        "targetId": "a-rag-06",
+        "reason": "完整回答核对：同为多轮 RAG 根据有效历史完成指代消解/查询改写，保留真实实体、时间与来源，检索后核验证据和回答一致性，缺失时澄清；窗口/摘要等实现补充随来源全文保留。"
+      }
+    ]
+  },
+  "structuralChecks": {
+    "passed": 17,
+    "checks": [
+      "901 unique canonical IDs",
+      "828 distinct sources present exactly once",
+      "all 1072 input records traceable",
+      "dedup arithmetic",
+      "no dangling provenance mappings",
+      "all old IDs titles answers and followups preserved",
+      "all old progress aliases preserved",
+      "full expert and source body preserved including one coding question without novice answer",
+      "all source links use pinned line positions",
+      "23 categories",
+      "12 repositories",
+      "every question categorized",
+      "all technical references resolve",
+      "all 74 Go retained",
+      "greenbook links to 777 themes",
+      "21 original upstream files byte-for-byte preserved",
+      "no online data fetch required"
+    ]
+  },
+  "markdownChecks": {
+    "sourceAnswersRendered": 828,
+    "safetyAndStructureChecks": 7
+  },
+  "browserChecks": {
+    "passed": 37,
+    "checks": [
+      "all 182 prior canonical IDs retained",
+      "828 source questions retained once",
+      "default original view count",
+      "initial answers rendered lazily",
+      "all canonical questions visible",
+      "all 74 Go questions retained",
+      "greenbook canonical filter",
+      "original greenbook ID search resolves merged entry",
+      "old detailed answer kept",
+      "all merged source answers retained",
+      "technical annotation shown separately",
+      "source comparison table rendered",
+      "source code blocks rendered",
+      "last book question searchable",
+      "last complete expert answer displayed",
+      "new question state persisted",
+      "new bookmark persisted",
+      "code containing headings did not truncate answer",
+      "embedded Markdown code rendered",
+      "user PDF 107 merged topics retained",
+      "user PDF original ID search retained",
+      "12 repository source cards",
+      "single book collection avoids duplicate README/PDF counting",
+      "dedup overview consistent",
+      "license and author visible",
+      "all merge groups lazy expansion",
+      "732-page source PDF available locally",
+      "old aliases migrate and bookmarks deduplicate",
+      "old theme preserved",
+      "old merged deep link resolves",
+      "old state migrates",
+      "canonical state wins alias conflict",
+      "mobile long detailed answer no overflow",
+      "mobile greenbook navigation closes menu",
+      "mobile book list no overflow",
+      "320px source cards no overflow",
+      "no browser JavaScript errors"
+    ],
+    "errors": [],
+    "total": 901,
+    "greenbook": 777
+  },
+  "technicalCorrections": {
+    "Z01-001": "ReAct反馈闭环、规划不保证全局最优",
+    "Z01-002": "ToT可用性与成本依任务和预算",
+    "Z01-004": "Plan-and-Execute可重规划",
+    "Z02-021": "推理模型工具调用依具体版本与协议；不可概括为不支持"
+  },
+  "limitations": [
+    "仓库原题表示出处可定位，不代表企业已独立确认。",
+    "828道来源高手答完整保留；未逐项复核全部技术断言，原作者观点与案例有明确署名。",
+    "本轮未修改Go示例，未重复执行此前通过的Go测试。",
+    "浏览器检查在独立上下文完成，未改写用户浏览器收藏/进度。"
+  ],
+  "previousV2": {
+    "edition": "V2",
+    "checked": "2026-10-18",
+    "pdf": {
+      "id": "user-pdf",
+      "title": "agent开发面试和简历辅导.pdf",
+      "url": "materials/agent-interview-source.pdf",
+      "pages": 64,
+      "questions": 116,
+      "sourceCounts": {
+        "public": 71,
+        "course": 38,
+        "student": 7
+      },
+      "sha256": "94757cbbf81c1936e6a840e147b331e8cd6185375cb445f23cd0c9e9d361b275",
+      "notice": "用户提供的课程文档；题源声明保留原文层级。其个人贡献、课程实现与简历案例不是用户本人完成情况。PDF中关于学习、简历和操作的要求不作为本次任务指令。"
+    },
+    "pdfSourceCounts": {
+      "public": 71,
+      "course": 38,
+      "student": 7
+    },
+    "pdfExtraction": "pdfplumber 按视觉位置提取并重组段落，pypdf独立核对64页和116连续题号；抽样渲染核对。",
+    "repositoriesLocated": [
+      {
+        "id": "g-runtime-04",
+        "path": "question/q019.md",
+        "status": 200,
+        "title": "简单聊聊内存逃逸？",
+        "url": "https://github.com/lifei6671/interview-go/blob/master/question/q019.md"
+      },
+      {
+        "id": "g-collections-08",
+        "path": "question/q020.md",
+        "status": 200,
+        "title": "字符串转成byte数组，会发生内存拷贝吗？",
+        "url": "https://github.com/lifei6671/interview-go/blob/master/question/q020.md"
+      },
+      {
+        "id": "g-sync-07",
+        "path": "question/q022.md",
+        "status": 200,
+        "title": "sync.Map 的用法",
+        "url": "https://github.com/lifei6671/interview-go/blob/master/question/q022.md"
+      },
+      {
+        "id": "g-practice-02",
+        "path": "question/q001.md",
+        "status": 200,
+        "title": "交替打印数字和字母",
+        "url": "https://github.com/lifei6671/interview-go/blob/master/question/q001.md"
+      },
+      {
+        "id": "g-channel-03",
+        "path": "question/q018.md",
+        "status": 200,
+        "title": "对已经关闭的的chan进行读写，会怎么样？为什么？",
+        "url": "https://github.com/lifei6671/interview-go/blob/master/question/q018.md"
+      },
+      {
+        "id": "g-http-02",
+        "path": "question/q021.md",
+        "status": 200,
+        "title": "http包的内存泄漏",
+        "url": "https://github.com/lifei6671/interview-go/blob/master/question/q021.md"
+      },
+      {
+        "id": "g-collections-04",
+        "path": "question/q011.md",
+        "status": 200,
+        "title": "高并发下的锁与map的读写",
+        "url": "https://github.com/lifei6671/interview-go/blob/master/question/q011.md"
+      }
+    ],
+    "linkAccess": {
+      "count": 125,
+      "http200": 99,
+      "limitations": "本轮26个pkg.go.dev入口出现TLS EOF，记录原始错误；不据此判断链接失效。上轮125个入口117可访问，其余MySQL域名限制与308重定向已改为官方镜像和规范入口。链接可访问不代表公开面经的企业及日期获独立确认。",
+      "results": [
+        {
+          "url": "https://arxiv.org/abs/1706.03762",
+          "status": 200,
+          "final": "https://arxiv.org/abs/1706.03762",
+          "bytesSampled": 43644,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://arxiv.org/abs/2307.03172",
+          "status": 200,
+          "final": "https://arxiv.org/abs/2307.03172",
+          "bytesSampled": 41931,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://arxiv.org/abs/2309.15217",
+          "status": 200,
+          "final": "https://arxiv.org/abs/2309.15217",
+          "bytesSampled": 41539,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://arxiv.org/abs/2607.14611",
+          "status": 200,
+          "final": "https://arxiv.org/abs/2607.14611",
+          "bytesSampled": 41467,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+          "status": 200,
+          "final": "https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+          "status": 200,
+          "final": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+          "bytesSampled": 101655,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/concepts/memory",
+          "status": 200,
+          "final": "https://docs.langchain.com/oss/python/concepts/memory",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+          "status": 200,
+          "final": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+          "status": 200,
+          "final": "https://docs.langchain.com/oss/python/langgraph/persistence",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/innodb-index-types.html",
+          "status": 200,
+          "final": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/innodb-index-types.html",
+          "bytesSampled": 7587,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/innodb-locking-reads.html",
+          "status": 200,
+          "final": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/innodb-locking-reads.html",
+          "bytesSampled": 18886,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/innodb-multi-versioning.html",
+          "status": 200,
+          "final": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/innodb-multi-versioning.html",
+          "bytesSampled": 11342,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/innodb-physical-structure.html",
+          "status": 200,
+          "final": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/innodb-physical-structure.html",
+          "bytesSampled": 7075,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/innodb-transaction-isolation-levels.html",
+          "status": 200,
+          "final": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/innodb-transaction-isolation-levels.html",
+          "bytesSampled": 26053,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/using-explain.html",
+          "status": 200,
+          "final": "https://docs.oracle.com/cd/E17952_01/mysql-8.4-en/using-explain.html",
+          "bytesSampled": 11687,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/adongwanai/AgentGuide/blob/main/docs/04-interview/02-rag-questions.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/adongwanai/AgentGuide/main/docs/04-interview/02-rag-questions.md",
+          "bytesSampled": 5120,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/adongwanai/AgentGuide/blob/main/docs/04-interview/03-agent-questions.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/adongwanai/AgentGuide/main/docs/04-interview/03-agent-questions.md",
+          "bytesSampled": 12542,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/anthropics/claude-cookbooks/tree/main/tool_use",
+          "status": 200,
+          "final": "https://github.com/anthropics/claude-cookbooks/tree/main/tool_use",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/bcefghj/ai-agent-interview-guide/blob/main/docs/06-%E9%9D%A2%E8%AF%95%E9%97%AE%E7%AD%94%E9%9B%86/README.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/bcefghj/ai-agent-interview-guide/main/docs/06-%E9%9D%A2%E8%AF%95%E9%97%AE%E7%AD%94%E9%9B%86/README.md",
+          "bytesSampled": 142237,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/datawhalechina/hello-agents/blob/main/docs/chapter12/%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/datawhalechina/hello-agents/main/docs/chapter12/%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0.md",
+          "bytesSampled": 112751,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/datawhalechina/hello-agents/blob/main/docs/chapter4/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/datawhalechina/hello-agents/main/docs/chapter4/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA.md",
+          "bytesSampled": 75527,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/datawhalechina/hello-agents/blob/main/docs/chapter8/%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E8%AE%B0%E5%BF%86%E4%B8%8E%E6%A3%80%E7%B4%A2.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/datawhalechina/hello-agents/main/docs/chapter8/%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E8%AE%B0%E5%BF%86%E4%B8%8E%E6%A3%80%E7%B4%A2.md",
+          "bytesSampled": 96382,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/datawhalechina/hello-agents/blob/main/docs/chapter9/%E7%AC%AC%E4%B9%9D%E7%AB%A0%20%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/datawhalechina/hello-agents/main/docs/chapter9/%E7%AC%AC%E4%B9%9D%E7%AB%A0%20%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B.md",
+          "bytesSampled": 106808,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/golang-design/go-questions",
+          "status": 200,
+          "final": "https://github.com/golang-design/go-questions",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/lifei6671/interview-go/blob/master/base/go-gpm.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/lifei6671/interview-go/master/base/go-gpm.md",
+          "bytesSampled": 7640,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/lifei6671/interview-go/blob/master/mysql/mysql-interview.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/lifei6671/interview-go/master/mysql/mysql-interview.md",
+          "bytesSampled": 50508,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/lifei6671/interview-go/blob/master/question/q001.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/lifei6671/interview-go/master/question/q001.md",
+          "bytesSampled": 1985,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/lifei6671/interview-go/blob/master/question/q011.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/lifei6671/interview-go/master/question/q011.md",
+          "bytesSampled": 2695,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/lifei6671/interview-go/blob/master/question/q018.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/lifei6671/interview-go/master/question/q018.md",
+          "bytesSampled": 4655,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/lifei6671/interview-go/blob/master/question/q019.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/lifei6671/interview-go/master/question/q019.md",
+          "bytesSampled": 3592,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/lifei6671/interview-go/blob/master/question/q020.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/lifei6671/interview-go/master/question/q020.md",
+          "bytesSampled": 1355,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/lifei6671/interview-go/blob/master/question/q021.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/lifei6671/interview-go/master/question/q021.md",
+          "bytesSampled": 8279,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/lifei6671/interview-go/blob/master/question/q022.md",
+          "status": 200,
+          "final": "https://raw.githubusercontent.com/lifei6671/interview-go/master/question/q022.md",
+          "bytesSampled": 647,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/wdndev/llm_interview_note",
+          "status": 200,
+          "final": "https://github.com/wdndev/llm_interview_note",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://github.com/yqchilde/Golang-Interview",
+          "status": 200,
+          "final": "https://github.com/yqchilde/Golang-Interview",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/blog/container-aware-gomaxprocs",
+          "status": 200,
+          "final": "https://go.dev/blog/container-aware-gomaxprocs",
+          "bytesSampled": 43641,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/blog/context",
+          "status": 200,
+          "final": "https://go.dev/blog/context",
+          "bytesSampled": 50821,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/blog/loopvar-preview",
+          "status": 200,
+          "final": "https://go.dev/blog/loopvar-preview",
+          "bytesSampled": 41044,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/blog/maps",
+          "status": 200,
+          "final": "https://go.dev/blog/maps",
+          "bytesSampled": 42883,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/blog/pipelines",
+          "status": 200,
+          "final": "https://go.dev/blog/pipelines",
+          "bytesSampled": 60150,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/blog/slices-intro",
+          "status": 200,
+          "final": "https://go.dev/blog/slices-intro",
+          "bytesSampled": 45411,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/blog/strings",
+          "status": 200,
+          "final": "https://go.dev/blog/strings",
+          "bytesSampled": 50011,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/blog/swisstable",
+          "status": 200,
+          "final": "https://go.dev/blog/swisstable",
+          "bytesSampled": 60641,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/blog/testing-b-loop",
+          "status": 200,
+          "final": "https://go.dev/blog/testing-b-loop",
+          "bytesSampled": 39348,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/blog/waza-talk",
+          "status": 200,
+          "final": "https://go.dev/blog/waza-talk",
+          "bytesSampled": 33747,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/articles/race_detector",
+          "status": 200,
+          "final": "https://go.dev/doc/articles/race_detector",
+          "bytesSampled": 38421,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/database/execute-transactions",
+          "status": 200,
+          "final": "https://go.dev/doc/database/execute-transactions",
+          "bytesSampled": 35507,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/database/manage-connections",
+          "status": 200,
+          "final": "https://go.dev/doc/database/manage-connections",
+          "bytesSampled": 33081,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/diagnostics",
+          "status": 200,
+          "final": "https://go.dev/doc/diagnostics",
+          "bytesSampled": 45187,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/gc-guide",
+          "status": 200,
+          "final": "https://go.dev/doc/gc-guide",
+          "bytesSampled": 103965,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/go1.14",
+          "status": 200,
+          "final": "https://go.dev/doc/go1.14",
+          "bytesSampled": 60621,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/go1.22",
+          "status": 200,
+          "final": "https://go.dev/doc/go1.22",
+          "bytesSampled": 71847,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/go1.23",
+          "status": 200,
+          "final": "https://go.dev/doc/go1.23",
+          "bytesSampled": 69814,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/go1.24",
+          "status": 200,
+          "final": "https://go.dev/doc/go1.24",
+          "bytesSampled": 82634,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/go1.26",
+          "status": 200,
+          "final": "https://go.dev/doc/go1.26",
+          "bytesSampled": 69379,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/doc/tutorial/generics",
+          "status": 200,
+          "final": "https://go.dev/doc/tutorial/generics",
+          "bytesSampled": 45492,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/ref/mem",
+          "status": 200,
+          "final": "https://go.dev/ref/mem",
+          "bytesSampled": 54188,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/ref/spec",
+          "status": 200,
+          "final": "https://go.dev/ref/spec",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/src/runtime/HACKING",
+          "status": 200,
+          "final": "https://go.dev/src/runtime/HACKING",
+          "bytesSampled": 52874,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://go.dev/wiki/Go123Timer",
+          "status": 200,
+          "final": "https://go.dev/wiki/Go123Timer",
+          "bytesSampled": 36581,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://grpc.io/docs/guides/retry/",
+          "status": 200,
+          "final": "https://grpc.io/docs/guides/retry/",
+          "bytesSampled": 76490,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+          "status": 200,
+          "final": "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+          "bytesSampled": 76654,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://huggingface.co/docs/transformers/en/cache_explanation",
+          "status": 200,
+          "final": "https://huggingface.co/docs/transformers/en/cache_explanation",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://json-schema.org/understanding-json-schema/reference/object",
+          "status": 200,
+          "final": "https://json-schema.org/understanding-json-schema/reference/object",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25",
+          "status": 200,
+          "final": "https://modelcontextprotocol.io/specification/2025-11-25",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/prompts",
+          "status": 200,
+          "final": "https://modelcontextprotocol.io/specification/2025-11-25/server/prompts",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/resources",
+          "status": 200,
+          "final": "https://modelcontextprotocol.io/specification/2025-11-25/server/resources",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+          "status": 200,
+          "final": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://pkg.go.dev/cmd/compile",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/context",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/database/sql",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/encoding/json",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/errors",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/fmt",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/golang.org/x/perf/cmd/benchstat",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/golang.org/x/sync/errgroup",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/golang.org/x/sync/singleflight",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/copylock",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/maps",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/net",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/net/http",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/net/http/httptest",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/os/signal",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/reflect",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/runtime",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/runtime/pprof",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/runtime/trace",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/slices",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/sync",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/sync/atomic",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/testing",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/time",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/unicode/utf8",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://pkg.go.dev/unsafe",
+          "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>",
+          "kind": "technical-reference"
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+          "status": 200,
+          "final": "https://claude.com/app-unavailable-in-region",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks",
+          "status": 200,
+          "final": "https://claude.com/app-unavailable-in-region",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://redis.io/docs/latest/commands/expire/",
+          "status": 200,
+          "final": "https://redis.io/docs/latest/commands/expire/",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://redis.io/docs/latest/commands/set/",
+          "status": 200,
+          "final": "https://redis.io/docs/latest/commands/set/",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/",
+          "status": 200,
+          "final": "https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/",
+          "bytesSampled": 146774,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/",
+          "status": 200,
+          "final": "https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://redis.io/docs/latest/develop/reference/client-side-caching/",
+          "status": 200,
+          "final": "https://redis.io/docs/latest/develop/reference/client-side-caching/",
+          "bytesSampled": 142618,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "status": 200,
+          "final": "https://www.anthropic.com/engineering/building-effective-agents",
+          "bytesSampled": 175753,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+          "status": 200,
+          "final": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+          "bytesSampled": 200000,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://www.anthropic.com/research/prompt-injection-defenses",
+          "status": 200,
+          "final": "https://www.anthropic.com/research/prompt-injection-defenses",
+          "bytesSampled": 117806,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        },
+        {
+          "url": "https://www.nowcoder.com/discuss/913848724952997888",
+          "status": 200,
+          "final": "https://www.nowcoder.com/discuss/913848724952997888",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/discuss/932016298563809280",
+          "status": 200,
+          "final": "https://www.nowcoder.com/discuss/932016298563809280",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/discuss/932392798559432704",
+          "status": 200,
+          "final": "https://www.nowcoder.com/discuss/932392798559432704",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/discuss/933060569995759616",
+          "status": 200,
+          "final": "https://www.nowcoder.com/discuss/933060569995759616",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/discuss/937314680270311424",
+          "status": 200,
+          "final": "https://www.nowcoder.com/discuss/937314680270311424",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/1d067ce539c64d3988eabb9b646ef8a0",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/1d067ce539c64d3988eabb9b646ef8a0",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/2f4e4cde4e524a16aae5f55a89c49273",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/2f4e4cde4e524a16aae5f55a89c49273",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/329a57a7469045058209b214e387e32c",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/329a57a7469045058209b214e387e32c",
+          "bytesSampled": 197152,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/32d60ac358504e86aab2d634a15b996b",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/32d60ac358504e86aab2d634a15b996b",
+          "bytesSampled": 6449,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/38659bd44a0141a48715a52b0300332c",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/38659bd44a0141a48715a52b0300332c",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/3ae147c4caaf40b580071ef9da71da2e",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/3ae147c4caaf40b580071ef9da71da2e",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/431b4ca35c7f43909219d31aebba5b56",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/431b4ca35c7f43909219d31aebba5b56",
+          "bytesSampled": 6409,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/556b3a764a614931bc5bb8a96e4f5f3f",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/556b3a764a614931bc5bb8a96e4f5f3f",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/577bbe48f8f846159c5b4400c4f10204",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/577bbe48f8f846159c5b4400c4f10204",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/95e9fc44397d4118ba3946ef0d33b6da",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/95e9fc44397d4118ba3946ef0d33b6da",
+          "bytesSampled": 174618,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/abef26e941054c9db854cba7c81049cd",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/abef26e941054c9db854cba7c81049cd",
+          "bytesSampled": 6307,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/b040e00a505344deac8f0d2b4968b171",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/b040e00a505344deac8f0d2b4968b171",
+          "bytesSampled": 6442,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/b34f6902e8544fe2953696ed52e49dba",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/b34f6902e8544fe2953696ed52e49dba",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/bb8c28105f364770b57ff5eb5649cc60",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/bb8c28105f364770b57ff5eb5649cc60",
+          "bytesSampled": 200000,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.nowcoder.com/feed/main/detail/f674f0f958c644629f024f95c7c104b6",
+          "status": 200,
+          "final": "https://www.nowcoder.com/feed/main/detail/f674f0f958c644629f024f95c7c104b6",
+          "bytesSampled": 6259,
+          "kind": "source-post",
+          "verification": "链接可访问；原帖题目仍按PDF转述标注。"
+        },
+        {
+          "url": "https://www.rabbitmq.com/docs/reliability",
+          "status": 200,
+          "final": "https://www.rabbitmq.com/docs/reliability",
+          "bytesSampled": 42707,
+          "kind": "technical-reference",
+          "verification": "技术资料入口可访问。"
+        }
+      ]
+    },
+    "questionCoverage": {
+      "questions": 182,
+      "categories": 18,
+      "repositories": 11,
+      "actual": 80,
+      "public": 69,
+      "student": 7,
+      "repo": 7,
+      "course": 38,
+      "edited": 68,
+      "tracks": {
+        "Agent": 108,
+        "Go": 74
+      }
+    },
+    "dedup": {
+      "inputCount": 244,
+      "outputCount": 182,
+      "mergedCount": 62,
+      "v1Count": 128,
+      "pdfCount": 116,
+      "oldAliasCount": 6,
+      "pdfInternalMerges": 9,
+      "crossSourceMerges": 47,
+      "criteria": "同一考察目标、关键机制与回答主体重合时合并，并保留变体与扩展。只因主题接近但决策前提不同的不强行合并，例如检索切块与合同全量覆盖、RRF融合与独立重排。"
+    }
+  }
+}

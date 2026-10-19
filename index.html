@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="按主题分类的 Agent 与 Go 本地面试题库，整合 PDF、zero2Agent 面试绿皮书与开源原题，附完整来源回答、追问解答和原题出处。">
+<meta name="color-scheme" content="light dark"><title>问知 · Agent × Go 面试题库</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+<script src="data.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip">跳到内容</a>
+<div class="mobile-bar"><button id="menu" aria-label="打开导航" aria-expanded="false"></button><span>问知 <small>INTERVIEW ATLAS</small></span><button id="mobile-theme" aria-label="切换主题"></button></div>
+<div id="scrim" class="scrim" hidden></div>
+<aside class="sidebar" id="sidebar" aria-label="题库导航">
+<a class="brand" href="#bank"><span class="brand-icon">知</span><span>问知<small>INTERVIEW ATLAS</small></span></a>
+<div class="workspace-label"><span class="live-dot"></span> 我的面试准备空间 <span class="local-label">LOCAL</span></div>
+<nav class="primary-nav" aria-label="主导航">
+<button data-view="bank"><span data-icon="book"></span>全部题库 <span class="nav-count" id="bank-count">—</span></button>
+<button data-view="actual"><span data-icon="check"></span>面经与仓库原题 <span class="nav-count" id="actual-count">—</span></button>
+<button data-view="pdf"><span data-icon="book"></span>PDF 收录题 <span class="nav-count" id="pdf-count">—</span></button>
+<button data-view="greenbook"><span data-icon="book"></span>zero2Agent 绿皮书 <span class="nav-count" id="greenbook-count">—</span></button>
+<button data-view="favorites"><span data-icon="bookmark"></span>我的收藏 <span class="nav-count" id="fav-count">0</span></button>
+<button data-view="review"><span data-icon="clock"></span>待复习 <span class="nav-count" id="review-count">0</span></button>
+<button data-view="sources"><span data-icon="github"></span>来源与去重 <span class="nav-count" id="repo-count">—</span></button>
+</nav>
+<div class="nav-section-title">主题目录 <span id="topic-track">AGENT</span></div>
+<nav id="topics" class="topic-nav" aria-label="按主题分类"></nav>
+<div class="sidebar-bottom">
+<div class="sidebar-progress"><div><span>整体掌握</span><b id="total-progress">0 / —</b></div><div class="progress-track"><i id="total-bar"></i></div></div>
+<button class="theme-button" id="theme"><span data-icon="sun"></span><span id="theme-label">切换深色模式</span><kbd>◐</kbd></button>
+<div class="sidebar-note">本地保存 · 无需账号</div>
+</div>
+</aside>
+<div class="shell">
+<header class="topbar"><div class="breadcrumb">学习空间 <span>/</span> <strong id="breadcrumb">分类题库</strong></div><div class="top-actions"><span class="checked-date">资料核验于 2026.10.18</span><button id="export" class="icon-button" title="导出收藏与进度" aria-label="导出收藏与进度"></button><button id="import" class="icon-button" title="导入收藏与进度" aria-label="导入收藏与进度"></button></div></header>
+<main id="main" tabindex="-1">
+<section class="intro"><div><p class="eyebrow"><span></span> A LITTLE PRACTICE, EVERY DAY</p><h1>面试题有出处，回答讲透彻<span>。</span></h1><p class="intro-description">整合原题、详细回答与失败边界。概念讲原理，方案讲取舍，项目讲证据。</p></div><div class="edition"><span>THE INTERVIEW COLLECTION</span><b>03<span> / </span>2026</b><small>原题溯源 · 详细回答</small></div></section>
+<div class="stats-strip"><span><b id="stat-questions">—</b> 道去重题</span><span><b id="stat-categories">—</b> 个知识主题</span><span><b id="stat-pdf">—</b> 道 PDF 来源题</span><span><b id="stat-greenbook">—</b> 道绿皮书来源题</span><span class="stats-note">详细回答 / 追问解答 / 原题与页码</span></div>
+<section id="bank-view">
+<div class="track-tabs" role="group" aria-label="题目方向"><button data-track="Agent"><span class="track-symbol" aria-hidden="true">✳</span> Agent 开发 <small>0</small></button><button data-track="Go"><span class="track-symbol go-symbol" aria-hidden="true">GO</span> Go 后端 <small>0</small></button><button data-track="all">全部方向 <small>—</small></button></div>
+<div class="learning-layout"><div class="question-main">
+<div class="section-heading"><div><p class="section-kicker" id="section-kicker">01 / AGENT ENGINEERING</p><h2 id="section-title">Agent 开发</h2><p id="section-description">模型原理、工具使用与可验证的工程实践。</p></div><button class="text-button" id="random"><span data-icon="shuffle"></span>随机自测</button></div>
+<div class="filters"><label class="search-label" for="search"><span data-icon="search"></span><span class="sr-only">搜索当前方向题目</span><input id="search" type="search" autocomplete="off" placeholder="搜索问题、知识点或来源…"><kbd>/</kbd></label><div class="select-filters"><label><span class="sr-only">题目来源</span><select id="origin"><option value="all">全部来源</option><option value="actual">面经 / 仓库原题</option><option value="public">公开面经</option><option value="student">学员反馈</option><option value="repo">仓库原题</option><option value="course">课程延伸</option><option value="edited">整理补充</option></select></label><label><span class="sr-only">难度</span><select id="level"><option value="all">全部难度</option><option>基础</option><option>进阶</option><option>场景</option></select></label><label><span class="sr-only">复习状态</span><select id="status"><option value="all">全部状态</option><option value="new">未学习</option><option value="learning">学习中</option><option value="review">待复习</option><option value="mastered">已掌握</option></select></label></div></div>
+<div class="list-toolbar"><div><span class="result-dot"></span><span id="result-count" role="status" aria-live="polite">0 道题</span><button class="reset-link" id="reset" hidden>清除筛选</button></div><label class="core-toggle"><input type="checkbox" id="core"><span>只看核心</span></label></div>
+<div id="questions"></div>
+</div><aside class="study-rail" aria-label="学习建议">
+<section class="rail-panel plan-panel"><p class="rail-kicker">YOUR PROGRESS</p><div class="rail-title">每次学懂一点<span data-icon="sprout"></span></div><p class="rail-description">先独立口述，再对照要点。<br>把会背的知识，变成会用的能力。</p><div id="track-progress"></div><div class="progress-legend"><span><i></i>已掌握</span><span>仅保存在本机浏览器</span></div></section>
+<section class="rail-panel route-panel"><p class="rail-kicker">SUGGESTED ROUTE</p><h3>先打基础，再讲工程</h3><ol id="route"></ol><button class="rail-source-link" data-view="sources">看看这些题从哪里来 <span>↗</span></button></section>
+<div class="editor-note"><span data-icon="info"></span><p>“核心”是整理后的学习优先级，不是企业出题频率。回答区区分整理回答、PDF 课程口述稿与绿皮书原文。仓库题的企业声明未经独立确认，第一人称案例不代表你已完成对应项目。</p></div>
+</aside></div>
+</section>
+<section id="sources-view" hidden><div class="sources-heading"><div><p class="section-kicker">THE READING LIST</p><h2>原题出处与去重记录</h2><p>保留每道原题、来源层级与合并去向，不把整理题冒充实面题。</p></div><span class="source-total" id="source-total"></span></div><div class="method-note"><b>如何筛选</b><p>看分类是否完整、是否解释原因、是否有代码或可验证示例、是否能找到原始资料。主线题库已抽样阅读，工程参考已核验 README 与入口；未对全仓库逐题审计。Star 与更新频率不作为唯一依据，也不展示未经核实的实时统计。</p><p id="method"></p></div><div id="document-sources"></div><div id="dedup-summary"></div><h3 class="repository-heading">GitHub 题库与技术参考</h3><div class="source-filters" role="group" aria-label="筛选仓库方向"><button data-source-track="all" class="active">全部资料</button><button data-source-track="Agent">Agent / LLM</button><button data-source-track="Go">Go / 后端</button></div><div id="repositories" class="repository-grid"></div><p class="source-footnote">上游内容版权和许可归原作者。用户提供的 PDF 以离线原件和带页码引用保留，课程简历模板不作为你的个人经历。zero2Agent 绿皮书以 Onefly 署名并按 CC BY-NC-SA 4.0 保留原文与许可，其他 GitHub 与官方资料提供出处和独立扩写。上游企业声明、作者观点与第一人称项目案例应独立验证，不作为你的个人事实。</p></section>
+<footer><span><b>问知</b> · 在理解之后，再回答。</span><span>OFFLINE FIRST <i></i> 2026.10.18</span></footer>
+</main>
+</div>
+<input type="file" id="import-file" accept="application/json,.json" hidden><div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<noscript><p class="noscript">此题库需要启用 JavaScript。也可查看同目录中的题库汇总.md。</p></noscript>
+</body></html>

@@ -1,0 +1,16 @@
+# Local and generated development files
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+.playwright-mcp/
+work/
+# Personal learning progress exports
+interview-atlas-progress*.json
+wenzhi-progress*.json
+问知-复习进度-*.json
