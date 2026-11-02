@@ -14,3 +14,9 @@ work/
 interview-atlas-progress*.json
 wenzhi-progress*.json
 问知-复习进度-*.json
+
+# Local test artifacts and optional personal settings
+.coverage
+htmlcov/
+.local/
+learning-test-results/

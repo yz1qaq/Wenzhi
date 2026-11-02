@@ -101,30 +101,40 @@ const questionById=new Map(D.questions.map(q=>[q.id,q]));
 const questionNumbers=new Map();const trackNumbers={};
 D.questions.forEach(q=>{trackNumbers[q.track]=(trackNumbers[q.track]||0)+1;questionNumbers.set(q.id,trackNumbers[q.track]);});
 const searchIndex=new Map();
-const STATUS = {new:'未学习',learning:'学习中',review:'待复习',mastered:'已掌握'};
+const Study = window.WenzhiStudy;
+const STATUS = {new:'未学习',learned:'已学习 · 未评估',low:'低掌握',medium:'中掌握',high:'高掌握'};
 const KEY = 'interview-atlas-progress-v1';
 const ids = new Set(D.questions.map(q => q.id));
-let persistent = true;
-let progress = {version:1,bookmarks:[],statuses:{},theme:'light'};
+let persistent = true, storageBlocked = false;
+let progress = Study.emptyProgress();
+progress.theme='dark';
 function canonicalId(id) { return D.aliases?.[id] || id; }
-function validateProgress(v) {
- if (!v || typeof v !== 'object' || Array.isArray(v) || v.version !== 1 || !Array.isArray(v.bookmarks) || !v.statuses || typeof v.statuses !== 'object' || Array.isArray(v.statuses)) throw new Error('文件格式不符');
- if(v.bookmarks.length>10000||Object.keys(v.statuses).length>10000)throw new Error('记录过多');
- if(v.bookmarks.some(id=>!ids.has(canonicalId(id)))||Object.entries(v.statuses).some(([id,status])=>!ids.has(canonicalId(id))||!Object.hasOwn(STATUS,status)))throw new Error('未知题号或状态');
- const statuses={};
- for(const [id,status] of Object.entries(v.statuses))if(!D.aliases?.[id])statuses[id]=status;
- for(const [id,status] of Object.entries(v.statuses))if(statuses[canonicalId(id)]===undefined)statuses[canonicalId(id)]=status;
- return {version:1,bookmarks:[...new Set(v.bookmarks.map(canonicalId))],statuses,theme:v.theme==='dark'?'dark':'light'};
-}
-try { const stored=localStorage.getItem(KEY); if(stored) progress=validateProgress(JSON.parse(stored)); }
-catch (_) { persistent=false; }
+function validateProgress(value) { return Study.normalizeProgress(value,D); }
+try {
+ const stored=localStorage.getItem(KEY);
+ if(stored){
+  const original=JSON.parse(stored);progress=validateProgress(original);
+  if(original.version===1){
+   try { if(!localStorage.getItem(KEY+'-backup-v1'))localStorage.setItem(KEY+'-backup-v1',stored);localStorage.setItem(KEY,JSON.stringify(progress)); }
+   catch(_){persistent=false;storageBlocked=true;}
+  }
+ }
+}catch(_){persistent=false;storageBlocked=true;}
 let state={view:'actual',track:'all',category:'all',query:'',level:'all',status:'all',origin:'all',core:false,sourceTrack:'all'};
 const expanded = new Set();
 let toastTimer;
 function toast(message) { $('#toast').textContent=message; $('#toast').hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>{$('#toast').hidden=true;},3800); }
-function save() {
- try { localStorage.setItem(KEY,JSON.stringify(progress)); persistent=true; }
- catch (_) { persistent=false; toast('浏览器限制了本地保存，请用导出按钮备份本次进度。'); }
+function save(){
+ if(storageBlocked){toast('原学习记录无法读取，已保护原数据。请先导出或导入有效备份后再保存。');return false;}
+ try{localStorage.setItem(KEY,JSON.stringify(progress));persistent=true;return true;}
+ catch(_){persistent=false;toast('学习记录保存失败，请导出备份并检查浏览器存储空间。');return false;}
+}
+function updateLearningProgress(id,patch){
+ if(storageBlocked){toast('原记录已保护；请先导入有效的学习记录备份。');return false;}
+ try{
+  const next=Study.updateProgress(progress,id,patch);
+  localStorage.setItem(KEY,JSON.stringify(next));progress=next;persistent=true;renderProgress();return true;
+ }catch(_){toast('记录未保存，请检查输入或浏览器存储空间。');return false;}
 }
 function applyTheme() {
  document.documentElement.dataset.theme=progress.theme;
@@ -134,7 +144,7 @@ function applyTheme() {
 }
 function toggleTheme(){progress.theme=progress.theme==='light'?'dark':'light';applyTheme();save();}
 function catOf(q){return D.categories.find(c=>c.id===q.category);}
-function statusOf(q){return progress.statuses[q.id]||'new';}
+function statusOf(q){return Study.statusOf(progress,q.id);}
 const SOURCE_LABEL={public:'公开面经',student:'学员反馈',repo:'仓库原题',course:'课程延伸',edited:'整理补充'};
 function mainSource(q){return ['public','student','repo','course','edited'].find(k=>q.sourceKinds?.includes(k))||'edited';}
 function trackCount(t){return D.questions.filter(q=>t==='all'||q.track===t).length;}
@@ -145,14 +155,15 @@ function filtered(){
   if(state.track!=='all'&&q.track!==state.track)return false;
   if(state.category!=='all'&&q.category!==state.category)return false;
   if(state.level!=='all'&&q.level!==state.level)return false;
-  if(state.status!=='all'&&statusOf(q)!==state.status)return false;
+  if(state.status==='studied'&&!Study.getRecord(progress,q.id).learned)return false;
+  if(!['all','studied'].includes(state.status)&&statusOf(q)!==state.status)return false;
   if(state.core&&q.priority!=='核心')return false;
   if(!matchesOrigin(q,state.origin))return false;
   if(state.view==='actual'&&!q.isActual)return false;
   if(state.view==='pdf'&&!q.originalVariants?.length)return false;
   if(state.view==='greenbook'&&!q.greenbook?.length)return false;
   if(state.view==='favorites'&&!progress.bookmarks.includes(q.id))return false;
-  if(state.view==='review'&&statusOf(q)!=='review')return false;
+  if(state.view==='review'&&!Study.isReviewDue(Study.getRecord(progress,q.id)))return false;
   if(!terms.length)return true;
   if(!searchIndex.has(q.id)){
   const sourceText=(q.refs||[]).map(r=>{const ref=D.references[r];return `${ref.label} ${D.repositories.find(x=>x.id===ref.repo)?.repo||''}`;}).join(' ');
@@ -162,13 +173,13 @@ function filtered(){
  });
 }
 function renderProgress(){
- const mastered=D.questions.filter(q=>statusOf(q)==='mastered').length;
+ const mastered=D.questions.filter(q=>statusOf(q)==='high').length;
  $('#total-progress').textContent=`${mastered} / ${D.questions.length}`;
  $('#total-bar').style.width=`${mastered/(D.questions.length||1)*100}%`;
  $('#fav-count').textContent=progress.bookmarks.length;
- $('#review-count').textContent=D.questions.filter(q=>statusOf(q)==='review').length;
+ $('#review-count').textContent=D.questions.filter(q=>Study.isReviewDue(Study.getRecord(progress,q.id))).length;
  $('#track-progress').innerHTML=['Agent','Go'].map(t=>{
- const n=D.questions.filter(q=>q.track===t&&statusOf(q)==='mastered').length;
+ const n=D.questions.filter(q=>q.track===t&&statusOf(q)==='high').length;
  return `<div class="track-progress-item"><div><span>${t==='Agent'?'Agent 开发':'Go 后端'}</span><b>${n} / ${trackCount(t)}</b></div><div class="progress-track"><i style="width:${n/(trackCount(t)||1)*100}%"></i></div></div>`;
  }).join('');
 }
@@ -185,12 +196,23 @@ function sourceLink(p){
  const pdf=D.documents?.find(x=>x.id===p.document);
  return `${pdf?`<a href="${esc(pdf.url)}#page=${p.pageStart}" target="_blank" rel="noopener">PDF ${esc(p.sourceId)} · 第 ${p.pageStart}${p.pageEnd!==p.pageStart?'–'+p.pageEnd:''} 页 ↗</a>`:''}${(p.urls||[]).map((u,i)=>`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${p.kind==='repo'?'仓库原题':'面经原帖'}${p.urls.length>1?' '+(i+1):''} ↗</a>`).join(' ')}`;
 }
+function statusActions(q){
+ const record=Study.getRecord(progress,q.id);
+ const source={self:'手动自评',ai:'AI 评估',legacy:'旧记录迁移'}[record.source]||'尚未评估';
+ const note=record.learned?`${source}${record.score===null?'':' · '+record.score+' 分'}${record.source==='legacy'?' · 建议重新评估':''}`:'阅读后标记学习状态与掌握程度';
+ return `<div class="mastery-record-note">${esc(note)}</div><div class="status-actions" role="group" aria-label="${esc(q.id)} 掌握程度">${Object.entries(STATUS).map(([key,label])=>`<button data-status="${key}" data-id="${esc(q.id)}" class="${statusOf(q)===key?'active':''}" aria-pressed="${statusOf(q)===key}">${key==='high'?'✓ ':''}${label}</button>`).join('')}</div>`;
+}
+function hydrateStudyAnswer(root,q){
+ root.querySelectorAll('[data-greenbook]').forEach(details=>{
+  const body=details.querySelector('[data-source-body]');if(body){body.dataset.rendered='true';body.innerHTML=greenbookNotice()+(q.greenbook||[]).map(greenbookVariant).join('');}details.open=true;
+ });
+}
 function classicAnswer(q){
  const refs=q.refs.map(key=>{const r=D.references[key];return `<a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">${esc(r.label)} ${icon('external')}</a>`;}).join('');
  const ps=q.provenance.filter(p=>p.kind!=='edited'||q.sourceKinds.includes('edited'));
  const example=q.example;
  const code=example?.code?{text:example.code,label:example.title,language:example.language}:q.code;
- return `<div class="answer"><p class="answer-kicker">DETAILED INTERVIEW ANSWER</p><h4 class="answer-main-title">详细参考回答</h4><p class="answer-attribution ${q.answerKind==='pdf-course'?'pdf-attribution':''}">${esc(q.answerAttribution)}</p><div class="standard-answer">${q.standardAnswer.map(p=>`<p>${rich(p)}</p>`).join('')}</div>${q.deepDive?.length?`<section class="deep-section"><h4>原理、步骤与边界</h4>${q.deepDive.map(x=>`<h5>${esc(x.title)}</h5><p>${rich(x.text)}</p>`).join('')}</section>`:''}${example?`<section class="case-section"><h4>${esc(example.title)}</h4><p>${rich(example.text)}</p>${example.sourceUrl?`<div class="reference-links"><a href="${esc(example.sourceUrl)}" target="_blank" rel="noopener">配套 Go 源码 ↗</a><a href="${esc(example.testUrl)}" target="_blank" rel="noopener">边界与竞态测试 ↗</a></div>`:''}</section>`:''}${code?`<p class="code-title">${esc(code.label||'代码片段')}</p><pre><code>${esc(code.text)}</code></pre>`:''}<section class="followups-section"><h4>追问与直接回答</h4>${q.followups.map(f=>`<div class="followup"><b>${esc(f.question)}</b><p>${rich(f.answer)}</p></div>`).join('')}</section>${q.pitfall&&!q.pitfall.startsWith('区分概念、课程示例')?`<p class="pitfall"><b>容易答偏：</b>${rich(q.pitfall)}</p>`:''}<details class="origin-details"><summary>原题、页码与合并记录 <span>${q.originalVariants?.length? q.originalVariants.map(v=>v.sourceId).join(' / '):'查看出处'}</span></summary><div class="origin-body">${ps.map(p=>`<div class="origin-item"><span class="source-badge source-${p.kind}">${SOURCE_LABEL[p.kind]}</span><b>${esc(p.title)}</b><p>${esc(p.statement)}</p><div class="reference-links">${sourceLink(p)}</div></div>`).join('')}${q.mergedNotes?.length?`<div class="merged-variants"><b>同考点合并的旧问法</b><ul>${q.mergedNotes.map(n=>`<li>${esc(n.title)}</li>`).join('')}</ul></div>`:''}${q.originalVariants?.length?`<p class="origin-note">PDF 以原作者口述稿为参考；表格与排版请查看原件。本次未将文档的简历模板、个人贡献或性能声明登记为你的个人事实。</p>`:''}</div></details>${sourceVariants(q)}<h4>技术核对与延伸阅读</h4><div class="reference-links">${refs}</div><div class="status-actions" role="group" aria-label="${esc(q.id)} 复习状态">${Object.entries(STATUS).map(([key,label])=>`<button data-status="${key}" data-id="${q.id}" class="${statusOf(q)===key?'active':''}" aria-pressed="${statusOf(q)===key}">${key==='mastered'?'✓ ':''}${label}</button>`).join('')}</div></div>`;
+ return `<div class="answer"><p class="answer-kicker">DETAILED INTERVIEW ANSWER</p><h4 class="answer-main-title">详细参考回答</h4><p class="answer-attribution ${q.answerKind==='pdf-course'?'pdf-attribution':''}">${esc(q.answerAttribution)}</p><div class="standard-answer">${q.standardAnswer.map(p=>`<p>${rich(p)}</p>`).join('')}</div>${q.deepDive?.length?`<section class="deep-section"><h4>原理、步骤与边界</h4>${q.deepDive.map(x=>`<h5>${esc(x.title)}</h5><p>${rich(x.text)}</p>`).join('')}</section>`:''}${example?`<section class="case-section"><h4>${esc(example.title)}</h4><p>${rich(example.text)}</p>${example.sourceUrl?`<div class="reference-links"><a href="${esc(example.sourceUrl)}" target="_blank" rel="noopener">配套 Go 源码 ↗</a><a href="${esc(example.testUrl)}" target="_blank" rel="noopener">边界与竞态测试 ↗</a></div>`:''}</section>`:''}${code?`<p class="code-title">${esc(code.label||'代码片段')}</p><pre><code>${esc(code.text)}</code></pre>`:''}<section class="followups-section"><h4>追问与直接回答</h4>${q.followups.map(f=>`<div class="followup"><b>${esc(f.question)}</b><p>${rich(f.answer)}</p></div>`).join('')}</section>${q.pitfall&&!q.pitfall.startsWith('区分概念、课程示例')?`<p class="pitfall"><b>容易答偏：</b>${rich(q.pitfall)}</p>`:''}<details class="origin-details"><summary>原题、页码与合并记录 <span>${q.originalVariants?.length? q.originalVariants.map(v=>v.sourceId).join(' / '):'查看出处'}</span></summary><div class="origin-body">${ps.map(p=>`<div class="origin-item"><span class="source-badge source-${p.kind}">${SOURCE_LABEL[p.kind]}</span><b>${esc(p.title)}</b><p>${esc(p.statement)}</p><div class="reference-links">${sourceLink(p)}</div></div>`).join('')}${q.mergedNotes?.length?`<div class="merged-variants"><b>同考点合并的旧问法</b><ul>${q.mergedNotes.map(n=>`<li>${esc(n.title)}</li>`).join('')}</ul></div>`:''}${q.originalVariants?.length?`<p class="origin-note">PDF 以原作者口述稿为参考；表格与排版请查看原件。本次未将文档的简历模板、个人贡献或性能声明登记为你的个人事实。</p>`:''}</div></details>${sourceVariants(q)}<h4>技术核对与延伸阅读</h4><div class="reference-links">${refs}</div>${statusActions(q)}</div>`;
 }
 function greenbookVariant(v){
  const href=safeHref(v.sourceUrl);
@@ -204,7 +226,7 @@ function sourceVariants(q){
 function answer(q){
  const sourceFirst=q.answerKind==='greenbook';
  if(!sourceFirst)return classicAnswer(q);
- return `<div class="answer"><p class="answer-kicker">GREENBOOK · ORIGINAL SOURCE ANSWER</p><h4 class="answer-main-title">绿皮书完整参考回答</h4>${greenbookNotice()}${(q.greenbook||[]).map(greenbookVariant).join('')}<div class="status-actions" role="group" aria-label="${esc(q.id)} 复习状态">${Object.entries(STATUS).map(([key,label])=>`<button data-status="${key}" data-id="${esc(q.id)}" class="${statusOf(q)===key?'active':''}" aria-pressed="${statusOf(q)===key}">${key==='mastered'?'✓ ':''}${label}</button>`).join('')}</div></div>`;
+ return `<div class="answer"><p class="answer-kicker">GREENBOOK · ORIGINAL SOURCE ANSWER</p><h4 class="answer-main-title">绿皮书完整参考回答</h4>${greenbookNotice()}${(q.greenbook||[]).map(greenbookVariant).join('')}${statusActions(q)}</div>`;
 }
 function ensureAnswer(details){
  if(!details.open||details.querySelector(':scope > .answer'))return;
@@ -220,14 +242,14 @@ function renderQuestions(){
  $('#result-count').textContent=`${qs.length} 道题${state.query?' · 当前方向搜索':''}`;
  $('#reset').hidden=!(state.query||state.category!=='all'||state.level!=='all'||state.status!=='all'||state.origin!=='all'||state.core);
  const cat=state.category!=='all'?D.categories.find(c=>c.id===state.category):null;
- const titles={bank:state.track==='all'?'全部方向':state.track==='Go'?'Go 后端':'Agent 开发',favorites:'我的收藏',review:'待复习',actual:'面经与仓库原题',pdf:'PDF 收录题',greenbook:'zero2Agent 面试绿皮书'};
+ const titles={bank:state.track==='all'?'全部方向':state.track==='Go'?'Go 后端':'Agent 开发',favorites:'我的收藏',review:'建议复习',actual:'面经与仓库原题',pdf:'PDF 收录题',greenbook:'zero2Agent 面试绿皮书'};
  $('#section-title').textContent=cat?.title||titles[state.view]||'题库';
  $('#section-kicker').textContent=state.track==='Go'?'02 / GO ENGINEERING':state.track==='all'?'THE COMPLETE COLLECTION':'01 / AGENT ENGINEERING';
- const descriptions={bank:state.track==='Go'?'语言语义、并发机制与后端服务的完整链路。':'模型原理、工具使用与可验证的工程实践。',favorites:'把值得反复思考的问题留在这里。',review:'重新讲一遍，直到能解释原因和边界。',actual:'公开面经、学员反馈与可定位的仓库原题；每题保留来源层级。',pdf:`${(D.documents||[]).reduce((n,d)=>n+(d.questions||0),0)} 道 PDF 原题按考点合并为 ${D.questions.filter(q=>q.originalVariants?.length).length} 个主题，原题题号与页码均可追溯。`,greenbook:`${(D.collections||[]).find(c=>c.id==='greenbook')?.questions??greenbookQuestions.reduce((n,q)=>n+q.greenbook.length,0)} 道来源原题，关联 ${greenbookQuestions.length} 个去重主题；保留完整参考回答、代码与出处。` };
+ const descriptions={bank:state.track==='Go'?'语言语义、并发机制与后端服务的完整链路。':'模型原理、工具使用与可验证的工程实践。',favorites:'把值得反复思考的问题留在这里。',review:'低掌握优先复习；中掌握 3 天、高掌握 7 天后复查。自评和 AI 评估分别记录来源。',actual:'公开面经、学员反馈与可定位的仓库原题；每题保留来源层级。',pdf:`${(D.documents||[]).reduce((n,d)=>n+(d.questions||0),0)} 道 PDF 原题按考点合并为 ${D.questions.filter(q=>q.originalVariants?.length).length} 个主题，原题题号与页码均可追溯。`,greenbook:`${(D.collections||[]).find(c=>c.id==='greenbook')?.questions??greenbookQuestions.reduce((n,q)=>n+q.greenbook.length,0)} 道来源原题，关联 ${greenbookQuestions.length} 个去重主题；保留完整参考回答、代码与出处。` };
  $('#section-description').textContent=cat?.subtitle||descriptions[state.view]||'';
  $('#random').disabled=qs.length===0;
  if(!qs.length){
-  const message=state.view==='favorites'?'点击题目右侧的书签，即可加入收藏。':state.view==='review'?'展开题目，将复习状态设为“待复习”。':'换一个关键词，或清除筛选后再试试。';
+  const message=state.view==='favorites'?'点击题目右侧的书签，即可加入收藏。':state.view==='review'?'当前没有低掌握或已到复习时间的题目。可到随机学习继续练习。':'换一个关键词，或清除筛选后再试试。';
   $('#questions').innerHTML=`<div class="empty-state">${icon(state.view==='favorites'?'bookmark':'search')}<h3>这里还没有符合条件的题目</h3><p>${message}</p><button data-empty-reset>查看当前方向全部题目</button></div>`;
   return;
  }
@@ -255,15 +277,16 @@ function renderSources(){
  $$('[data-source-track]').forEach(b=>b.classList.toggle('active',b.dataset.sourceTrack===state.sourceTrack));
 }
 function render(){
- const source=state.view==='sources';
- $('#bank-view').hidden=source;$('#sources-view').hidden=!source;
- $('#breadcrumb').textContent=({bank:'分类题库',favorites:'我的收藏',review:'待复习',actual:'面经与仓库原题',pdf:'PDF 收录题',greenbook:'zero2Agent 面试绿皮书',sources:'来源与去重'})[state.view];
+ const source=state.view==='sources',learningView=['study','practice','stats','settings'].includes(state.view);
+ document.body.classList.toggle('learning-active',learningView);
+ $('#bank-view').hidden=source||learningView;$('#sources-view').hidden=!source;$('#learning-view').hidden=!learningView;
+ $('#breadcrumb').textContent=({bank:'分类题库',favorites:'我的收藏',review:'建议复习',actual:'面经与仓库原题',pdf:'PDF 收录题',greenbook:'zero2Agent 面试绿皮书',sources:'来源与去重',study:'随机学习',practice:'AI 答题评估',stats:'掌握统计',settings:'模型配置'})[state.view];
  $$('.primary-nav [data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===state.view);b.setAttribute('aria-current',b.dataset.view===state.view?'page':'false');});
  $$('[data-track]').forEach(b=>{b.classList.toggle('active',b.dataset.track===state.track);b.setAttribute('aria-pressed',b.dataset.track===state.track);});
  $$('[data-track]').forEach(b=>{const count=b.querySelector('small');if(count)count.textContent=trackCount(b.dataset.track);});
  $('#bank-count').textContent=D.questions.length;$('#actual-count').textContent=D.questions.filter(q=>q.isActual).length;$('#pdf-count').textContent=D.questions.filter(q=>q.originalVariants?.length).length;$('#stat-questions').textContent=D.questions.length;$('#stat-categories').textContent=D.categories.length;$('#greenbook-count').textContent=greenbookQuestions.length;$('#repo-count').textContent=D.repositories.length;$('#stat-pdf').textContent=(D.documents||[]).reduce((n,d)=>n+(d.questions||0),0);$('#stat-greenbook').textContent=(D.collections||[]).find(c=>c.id==='greenbook')?.questions??greenbookQuestions.reduce((n,q)=>n+q.greenbook.length,0);$('#source-total').textContent=`${(D.documents||[]).length} PDF + ${(D.collections||[]).length} COLLECTION + ${D.repositories.length} REPOSITORIES ↗`;
  renderTopics();renderProgress();renderRoute();
- if(source)renderSources();else renderQuestions();
+ if(source)renderSources();else if(learningView)learningUI.render(state.view);else renderQuestions();
 }
 function closeMenu(){ $('#sidebar').classList.remove('open');$('#scrim').hidden=true;$('#menu').setAttribute('aria-expanded','false');$('#menu').setAttribute('aria-label','打开导航'); }
 function resetFilters(){state.category='all';state.query='';state.level='all';state.status='all';state.origin='all';state.core=false;$('#search').value='';$('#level').value='all';$('#status').value='all';$('#origin').value='all';$('#core').checked=false;}
@@ -277,7 +300,7 @@ function navigate(view,{track,category,scroll=true}={}){
 function readHash(){
  const raw=location.hash.slice(1);if(raw==='bank'){state.view='bank';return;}const direct=D.questions.find(q=>q.id===canonicalId(raw));
  if(direct){state.view='bank';state.track=direct.track;state.category=direct.category;expanded.add(direct.id);return direct.id;}
- const p=new URLSearchParams(raw);if(['bank','actual','pdf','greenbook','favorites','review','sources'].includes(p.get('view')))state.view=p.get('view');
+ const p=new URLSearchParams(raw);if(['bank','actual','pdf','greenbook','favorites','review','sources','study','practice','stats','settings'].includes(p.get('view')))state.view=p.get('view');
  if(['Agent','Go','all'].includes(p.get('track')))state.track=p.get('track');
  const c=D.categories.find(x=>x.id===p.get('category'));
  if(c){state.category=c.id;state.track=c.track;}
@@ -290,14 +313,17 @@ document.addEventListener('click',e=>{
  if(b.dataset.jump){const c=D.categories.find(x=>x.id===b.dataset.jump);navigate('bank',{track:c.track,category:c.id});return;}
  if(b.dataset.bookmark){
   const id=b.dataset.bookmark;const added=!progress.bookmarks.includes(id);
-  progress.bookmarks=added?[...progress.bookmarks,id]:progress.bookmarks.filter(x=>x!==id);save();
+  const previousBookmarks=progress.bookmarks;
+  progress.bookmarks=added?[...progress.bookmarks,id]:progress.bookmarks.filter(x=>x!==id);
+  if(!save()){progress.bookmarks=previousBookmarks;return;}
   if(state.view==='favorites')render();else {b.setAttribute('aria-pressed',added);const q=D.questions.find(q=>q.id===id);b.setAttribute('aria-label',`${added?'取消收藏':'收藏'}：${q.title}`);b.title=added?'取消收藏':'收藏';renderProgress();}
   toast(added?'已加入收藏':'已取消收藏');return;
  }
  if(b.dataset.status){
-  const {id,status}=b.dataset;progress.statuses[id]=status;save();
-  const focusId=id;render();
-  document.querySelector(`[data-status="${status}"][data-id="${focusId}"]`)?.focus({preventScroll:true});
+  const {id,status}=b.dataset;if(!ids.has(id)||!Object.hasOwn(STATUS,status))return;
+  const patch={learned:status!=='new',mastery:['low','medium','high'].includes(status)?status:null,source:'self'};
+  if(!updateLearningProgress(id,patch))return;
+  render();document.querySelector(`[data-status="${status}"][data-id="${id}"]`)?.focus({preventScroll:true});
   toast(`已标记为${STATUS[status]}`);return;
  }
  if(b.dataset.sourceTrack){state.sourceTrack=b.dataset.sourceTrack;renderSources();return;}
@@ -317,8 +343,7 @@ $('#core').addEventListener('change',e=>{state.core=e.target.checked;renderQuest
 $('#reset').addEventListener('click',()=>navigate(state.view,{track:state.track,scroll:false}));
 $('#random').addEventListener('click',()=>{
  const qs=filtered();if(!qs.length)return;
- const pending=qs.filter(q=>statusOf(q)!=='mastered');const pool=pending.length?pending:qs;
- const q=pool[Math.floor(Math.random()*pool.length)];expanded.clear();renderQuestions();
+ const q=Study.selectQuestion(qs,progress,{mode:'weighted'});expanded.clear();renderQuestions();
  const details=document.querySelector(`[data-question="${q.id}"]`);details.open=true;expanded.add(q.id);ensureAnswer(details);details.querySelector('summary').focus({preventScroll:true});
  details.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'center'});
  toast('先独立口述，再对照答题要点');
@@ -332,20 +357,20 @@ document.addEventListener('keydown',e=>{
  if(e.key==='/'&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();if(state.view==='sources')navigate('bank',{scroll:false});$('#search').focus();}
 });
 function download(filename,text,type){const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);}
-$('#export').addEventListener('click',()=>{download(`问知-复习进度-${new Date().toISOString().slice(0,10)}.json`,JSON.stringify({...progress,exportedAt:new Date().toISOString()},null,2),'application/json');toast('收藏与复习进度已导出');});
+$('#export').addEventListener('click',()=>{if(storageBlocked){let raw=null;try{raw=localStorage.getItem(KEY);}catch(_){}if(raw){download('问知-原始记录备份.json',raw,'application/json');toast('已导出受保护的原始记录');}else toast('原记录无法读取，未覆盖原数据');return;}download(`问知-复习进度-${new Date().toISOString().slice(0,10)}.json`,JSON.stringify({...progress,exportedAt:new Date().toISOString()},null,2),'application/json');toast('收藏与复习进度已导出');});
 $('#import').addEventListener('click',()=>$('#import-file').click());
 $('#import-file').addEventListener('change',async e=>{
  const file=e.target.files[0];if(!file)return;
  try{
-  if(file.size>1024*1024)throw new Error('文件过大');
+  if(file.size>8*1024*1024)throw new Error('文件过大');
   const incoming=validateProgress(JSON.parse(await file.text()));
-  progress.bookmarks=[...new Set([...progress.bookmarks,...incoming.bookmarks])];
-  progress.statuses={...progress.statuses,...incoming.statuses};
-  save();render();toast('已合并导入；同题状态以导入记录为准');
+  const merged=Study.mergeProgress(progress,incoming,D);
+  localStorage.setItem(KEY,JSON.stringify(merged));progress=merged;storageBlocked=false;persistent=true;applyTheme();render();toast('已合并导入；同题掌握记录以导入记录为准');
  }catch(_){toast('导入失败：请选择本题库导出的有效 JSON 文件。');}
  finally{e.target.value='';}
 });
 window.addEventListener('hashchange',()=>{resetFilters();const id=readHash();render();if(id)requestAnimationFrame(()=>document.getElementById('q-'+id)?.scrollIntoView({block:'center'}));});
+const learningUI=window.WenzhiLearning.create({data:D,core:Study,getProgress:()=>progress,updateProgress:updateLearningProgress,navigate,renderMarkdown:markdown,renderAnswer:answer,hydrateAnswer:hydrateStudyAnswer,toast,escape:esc});
 applyTheme();const first=readHash();render();if(first)setTimeout(()=>$('#q-'+first)?.scrollIntoView({block:'center'}),100);
-if(!persistent)setTimeout(()=>toast('已有进度无法读取或浏览器限制了存储；可用导入/导出备份。'),300);
+if(!persistent)setTimeout(()=>toast('已有记录无法读取或迁移保存失败，已保护原记录；请先导出备份，再导入有效记录恢复。'),300);
 })();
